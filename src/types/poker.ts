@@ -14,7 +14,12 @@ export interface Player {
   isAI: boolean;
   currentBet: number;
   hasFolded: boolean;
+  isDealer: boolean;
+  position: 'dealer' | 'smallBlind' | 'bigBlind' | 'normal';
+  hasActed: boolean;
 }
+
+export type BettingRound = 'preflop' | 'flop' | 'turn' | 'river' | 'showdown';
 
 export interface GameState {
   players: Player[];
@@ -23,7 +28,31 @@ export interface GameState {
   currentPlayer: number;
   pot: number;
   currentBet: number;
-  gamePhase: 'preflop' | 'flop' | 'turn' | 'river' | 'showdown';
+  gamePhase: BettingRound;
+  dealerPosition: number;
+  smallBlind: number;
+  bigBlind: number;
+  minRaise: number;
+  lastRaiseAmount: number;
+  roundComplete: boolean;
+  playerHand: Card[];
+  probabilities: {
+    current: HandProbability;
+    future: HandProbability;
+  };
 }
 
-export type Action = 'fold' | 'check' | 'call' | 'raise'; 
+export type Action = 'fold' | 'check' | 'call' | 'raise';
+
+export interface HandProbability {
+  onePair: number;
+  twoPair: number;
+  threeOfAKind: number;
+  straight: number;
+  flush: number;
+  fullHouse: number;
+  fourOfAKind: number;
+  straightFlush: number;
+  royalFlush: number;
+  highCard: number;
+} 

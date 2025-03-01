@@ -1,36 +1,45 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 홀덤 확률 계산기
 
-## Getting Started
+텍사스 홀덤 포커 게임에서 현재 핸드와 보드 상태에 따른 각 핸드의 확률을 계산해주는 웹 애플리케이션입니다.
 
-First, run the development server:
+## 주요 기능
+
+- 플레이어의 핸드 카드 선택
+- 커뮤니티 카드(보드) 선택
+- 실시간 확률 계산
+  - 현재 가능한 핸드 확률
+  - 미래에 가능한 핸드 확률
+- 게임 진행 단계별 확률 표시 (프리플랍, 플랍, 턴, 리버)
+
+## 기술 스택
+
+- Next.js
+- TypeScript
+- Tailwind CSS
+
+## 설치 방법
 
 ```bash
+# 저장소 클론
+git clone https://github.com/[your-username]/holdom.git
+
+# 디렉토리 이동
+cd holdom
+
+# 의존성 설치
+npm install
+
+# 개발 서버 실행
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 사용 방법
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. 나의 핸드 영역에서 카드를 클릭하여 보유한 카드를 선택합니다.
+2. 보드 영역에서 카드를 클릭하여 커뮤니티 카드를 선택합니다.
+3. 실시간으로 계산되는 각 핸드의 확률을 확인합니다.
+4. "다음 단계" 버튼을 클릭하여 게임 단계를 진행할 수 있습니다.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 라이선스
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License
