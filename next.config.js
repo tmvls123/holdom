@@ -5,6 +5,8 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  assetPrefix: '/holdom/',
+  trailingSlash: true,
 }
 
 module.exports = nextConfig 
