@@ -39,13 +39,24 @@ export function dealInitialCards(): GameState {
   const deck = createDeck();
   const playerHand = [deck.pop()!, deck.pop()!];
   const communityCards: Card[] = [];
-  
+  const probabilities = calculateProbabilities(playerHand, communityCards, deck);
+
   return {
     playerHand,
     communityCards,
     deck,
-    probabilities: calculateProbabilities(playerHand, communityCards, deck),
-    gamePhase: 'preflop'
+    probabilities,
+    gamePhase: 'preflop',
+    players: [],
+    currentPlayer: 0,
+    pot: 0,
+    currentBet: 0,
+    dealerPosition: 0,
+    smallBlind: 1,
+    bigBlind: 2,
+    minRaise: 2,
+    lastRaiseAmount: 0,
+    roundComplete: false
   };
 }
 
