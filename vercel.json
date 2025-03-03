@@ -8,6 +8,11 @@
   ],
   "github": {
     "enabled": true,
-    "silent": true
+    "silent": true,
+    "autoAlias": true,
+    "deploymentEnabled": {
+      "gh-pages": false,
+      "main": true
+    }
   }
 } 

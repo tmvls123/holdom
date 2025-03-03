@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "next build && touch out/.nojekyll"
+    "deploy": "next build && touch out/.nojekyll",
+    "vercel-build": "npm install && next build"
   },
   "dependencies": {
     "next": "13.4.19",
