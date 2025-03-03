@@ -193,7 +193,7 @@ function evaluateHand(cards: Card[]): keyof HandProbability {
   const hasFlush = Array.from(suitCounts.values()).some(count => count >= 5);
 
   // 스트레이트 체크
-  const ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+  const ranks = RANKS;
   const uniqueRanks = Array.from(rankCounts.keys()).sort(
     (a, b) => ranks.indexOf(a) - ranks.indexOf(b)
   );
@@ -210,8 +210,8 @@ function evaluateHand(cards: Card[]): keyof HandProbability {
     }
   }
   // A-5 스트레이트 체크
-  if (!hasStraight && uniqueRanks.includes('A')) {
-    const lowAceStraight = ['A', '2', '3', '4', '5'];
+  if (!hasStraight && uniqueRanks.includes('A' as Rank)) {
+    const lowAceStraight: Rank[] = ['A', '2', '3', '4', '5'] as Rank[];
     if (lowAceStraight.every(rank => uniqueRanks.includes(rank))) {
       hasStraight = true;
     }
