@@ -260,6 +260,8 @@ export const initializeGame = (playerCount: number = 6): GameState => {
   const players: Player[] = [];
   const smallBlind = 10;
   const bigBlind = 20;
+  const playerHand: Card[] = [];
+  const communityCards: Card[] = [];
 
   // 사람 플레이어 추가
   players.push({
@@ -291,10 +293,13 @@ export const initializeGame = (playerCount: number = 6): GameState => {
     });
   }
 
+  // 초기 확률 계산
+  const probabilities = calculateProbabilities(playerHand, communityCards, deck);
+
   return {
     players,
     deck,
-    communityCards: [],
+    communityCards,
     currentPlayer: 0,
     pot: 0,
     currentBet: 0,
@@ -304,7 +309,9 @@ export const initializeGame = (playerCount: number = 6): GameState => {
     bigBlind,
     minRaise: bigBlind,
     lastRaiseAmount: 0,
-    roundComplete: false
+    roundComplete: false,
+    playerHand,
+    probabilities
   };
 };
 
@@ -354,6 +361,9 @@ export const advanceGamePhase = (gameState: GameState): GameState => {
     firstPlayer = (firstPlayer + 1) % newState.players.length;
   }
   newState.currentPlayer = firstPlayer;
+
+  // 새로운 확률 계산
+  newState.probabilities = calculateProbabilities(newState.playerHand, newState.communityCards, newState.deck);
   
   return newState;
 };
